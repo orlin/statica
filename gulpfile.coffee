@@ -6,3 +6,4 @@ gulp.task "default", ->
     verbose: false
     script: "server.coffee"
     watch: "server.coffee"
+    env: { NODE_ENV: "development" }
