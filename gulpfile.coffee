@@ -1,13 +1,17 @@
 gulp = require("gulp")
+gutil = require("gulp-util")
 nodemon = require("gulp-nodemon")
 exclude = require("gulp-ignore").exclude;
 tap = require("gulp-tap")
 path = require("path")
 exec = require("gulp-exec")
-gutil = require("gulp-util")
+help = require("gulp-task-listing")
 livereload = require("gulp-livereload")
 
 # print = require("gulp-print") # debug
+
+
+gulp.task "help", help
 
 gulp.task "server", (next) ->
   nodemon
