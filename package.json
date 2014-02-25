@@ -1,0 +1,36 @@
+{ "name": "statica"
+, "private": true
+, "description": "gulp harp multihost"
+, "keywords": [ "gulp", "harp", "multihost", "compass", "workflow" ]
+, "version": "0.0.1"
+, "repository":
+  { "type": "git"
+  , "url": "git://github.com/orlin/statica.git"
+  }
+, "bugs":
+  { "mail": "om@soundsapiens.com"
+  , "url" : "https://github.com/orlin/statica/issues"
+  }
+, "author": "Orlin M Bozhinov <om@soundsapiens.com>"
+, "contributors": []
+, "dependencies":
+  { "coffee-script": "*"
+  , "harp": "*"
+  , "gulp": "*"
+  , "gulp-nodemon": "*"
+  , "gulp-ignore": "*"
+  , "gulp-tap": "*"
+  , "gulp-exec": "*"
+  , "gulp-util": "*"
+  , "gulp-task-listing": "*"
+  , "gulp-livereload": "*"
+  }
+, "devDependencies": { "gulp-print": "*" }
+, "scripts": { "server": "node_modules/.bin/gulp" }
+, "engines" : { "node" : "0.10.x" }
+, "licenses":
+  [ { "type": "Unlicense"
+    , "url" : "http://unlicense.org/"
+    }
+  ]
+}
