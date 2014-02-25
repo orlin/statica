@@ -18,6 +18,7 @@
   , "harp": "*"
   , "gulp": "*"
   , "gulp-nodemon": "*"
+  , "gulp-livereload": "*"
   }
 , "devDependencies": {}
 , "scripts": { "server": "node_modules/.bin/gulp" }
