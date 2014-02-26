@@ -3,7 +3,7 @@ gutil = require("gulp-util")
 nodemon = require("gulp-nodemon")
 tap = require("gulp-tap")
 path = require("path")
-exec = require("gulp-exec")
+exec = require("child_process").exec
 help = require("gulp-task-listing")
 livereload = require("gulp-livereload")
 
@@ -21,14 +21,21 @@ gulp.task "server", (next) ->
   next()
 
 gulp.task "compass", ->
+  compile = (config, path) ->
+    exec "compass compile -c #{config}", {cwd: path}, (error, stdout, stderr) ->
+      console.log("[compass] compiling #{path}")
+      process.stdout.write(stdout)
+      console.log("[compass] error(s) above") if error isnt null
   gulp.src("harp/**/+(config|compass).rb", read: false)
     .pipe tap (configFile) ->
       configFull = configFile.path
       configPath = path.dirname(configFile.path)
       configName = path.basename(configFile.path)
-      gutil.log "Compass project #{configName} in #{configPath}"
-      gulp.src("#{configPath}/**/!(_)*.+(sass|scss)")
-        .pipe exec("cd #{configPath} && compass compile <%= file.path %> -c #{configFull}", silent: true)
+      gutil.log "Compass config #{configName} for #{configPath}"
+      compile(configFull, configPath)
+      gulp.watch "#{configPath}/**/*.+(sass|scss)", (event) ->
+        if event.type is "changed"
+          compile(configFull, configPath)
 
 gulp.task "default", ["server"], ->
   reload = livereload()

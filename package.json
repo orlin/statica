@@ -19,7 +19,6 @@
   , "gulp": "*"
   , "gulp-nodemon": "*"
   , "gulp-tap": "*"
-  , "gulp-exec": "*"
   , "gulp-util": "*"
   , "gulp-livereload": "*"
   , "gulp-task-listing": "*"
