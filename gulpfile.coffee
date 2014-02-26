@@ -22,12 +22,12 @@ gulp.task "server", (next) ->
   next()
 
 gulp.task "compass", ->
-  gulp.src(["harp/**/config.rb", "harp/**/compass.rb"], read: false)
+  gulp.src("harp/**/+(config|compass).rb", read: false)
     .pipe tap (configFile) ->
       configPath = path.dirname(configFile.path)
       configName = path.basename(configFile.path)
       gutil.log "Compass project #{configName} in #{configPath}"
-      gulp.src(["#{configPath}/**/*.sass", "#{configPath}/**/*.scss"])
+      gulp.src("#{configPath}/**/*.+(sass|scss)")
         .pipe exclude("**/_*")
         .pipe exec("cd #{configPath} && compass compile <%= file.path %>", silent: true)
 
