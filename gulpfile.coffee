@@ -39,7 +39,7 @@ gulp.task "compass", ->
 
 gulp.task "livereload", ->
   reload = livereload()
-  gulp.watch("harp/**").on "change", (file) ->
+  gulp.watch("harp/**/*.+(jade|css)").on "change", (file) ->
     reload.changed(file.path)
 
 gulp.task "default", ["server", "compass", "livereload"]
