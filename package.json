@@ -22,6 +22,7 @@
   , "gulp-util": "*"
   , "gulp-livereload": "*"
   , "gulp-task-listing": "*"
+  , "deepmerge": "*"
   }
 , "devDependencies": { "gulp-print": "*" }
 , "scripts": { "server": "node_modules/.bin/gulp" }

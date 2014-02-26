@@ -9,4 +9,11 @@ defaults =
   gulp:
     default: ["server", "compass", "livereload"]
 
-module.exports = defaults
+fs = require("fs")
+merge = require("deepmerge")
+optional = "./options.json"
+
+if fs.existsSync(optional)
+  module.exports = merge(defaults, require(optional))
+else
+  module.exports = defaults
