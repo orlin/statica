@@ -1,5 +1,8 @@
-port = 9000
+o = require("./options.coffee")
+
+harp = require("harp")
 pkgv = require("./node_modules/harp/package.json").version
-harp = require "harp"
-harp.multihost "harp", port: port, ->
+port = o.harp.port
+
+harp.multihost o.harp.path, port: port, ->
   console.log " Harp v#{pkgv} on http://localhost:#{port}"
