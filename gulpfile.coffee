@@ -36,7 +36,7 @@ gulp.task "compass", ->
         if event.type is "changed"
           compile(config)
 
-gulp.task "default", ["server"], ->
+gulp.task "default", ["server", "compass"], ->
   reload = livereload()
   gulp.watch("harp/**").on "change", (file) ->
     reload.changed(file.path)
