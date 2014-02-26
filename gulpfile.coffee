@@ -1,3 +1,4 @@
+o = require("./options.coffee")
 gulp = require("gulp")
 gutil = require("gulp-util")
 nodemon = require("gulp-nodemon")
@@ -21,7 +22,7 @@ gulp.task "server", (next) ->
   next()
 
 gulp.task "compass", ->
-  gulp.src("harp/**/+(config|compass).rb", read: false)
+  gulp.src(o.compass.config, read: false)
     .pipe tap (config) ->
       project = path.dirname(config.path)
       gutil.log "Compass #{path.basename(config.path)} in #{project}"
@@ -39,7 +40,7 @@ gulp.task "compass", ->
 
 gulp.task "livereload", ->
   reload = livereload()
-  gulp.watch("harp/**/*.+(jade|css)").on "change", (file) ->
+  gulp.watch(o.livereload.watch).on "change", (file) ->
     reload.changed(file.path)
 
-gulp.task "default", ["server", "compass", "livereload"]
+gulp.task "default", o.gulp.default
