@@ -23,11 +23,12 @@ gulp.task "server", (next) ->
 gulp.task "compass", ->
   gulp.src("harp/**/+(config|compass).rb", read: false)
     .pipe tap (configFile) ->
+      configFull = configFile.path
       configPath = path.dirname(configFile.path)
       configName = path.basename(configFile.path)
       gutil.log "Compass project #{configName} in #{configPath}"
       gulp.src("#{configPath}/**/!(_)*.+(sass|scss)")
-        .pipe exec("cd #{configPath} && compass compile <%= file.path %>", silent: true)
+        .pipe exec("cd #{configPath} && compass compile <%= file.path %> -c #{configFull}", silent: true)
 
 gulp.task "default", ["server"], ->
   reload = livereload()
