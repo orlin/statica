@@ -1,5 +1,6 @@
 defaults =
   harp:
+    server: "multihost" # use "server" for a solo site
     path: "harp"
     port: 9000
   compass:
