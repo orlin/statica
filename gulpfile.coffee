@@ -21,20 +21,21 @@ gulp.task "server", (next) ->
   next()
 
 gulp.task "compass", ->
-  compile = (config) ->
-    proj = path.dirname(config.path)
-    exec "compass compile -c #{config.path}", {cwd: proj}, (error, stdout, stderr) ->
-      console.log("[compass] compiling #{proj}")
-      process.stdout.write(stdout)
-      console.log("[compass] error(s) above") if error isnt null
   gulp.src("harp/**/+(config|compass).rb", read: false)
     .pipe tap (config) ->
-      proj = path.dirname(config.path)
-      gutil.log "Compass #{path.basename(config.path)} in #{proj}"
-      compile(config)
-      gulp.watch "#{proj}/**/*.+(sass|scss)", (event) ->
+      project = path.dirname(config.path)
+      gutil.log "Compass #{path.basename(config.path)} in #{project}"
+      compile = ->
+        exec "compass compile -c #{config.path}"
+        , {cwd: project}
+        , (error, stdout, stderr) ->
+          console.log("[compass] compiling #{project}")
+          process.stdout.write(stdout)
+          console.log("[compass] error(s) above") if error isnt null
+      compile()
+      gulp.watch "#{project}/**/*.+(sass|scss)", (event) ->
         if event.type is "changed"
-          compile(config)
+          compile()
 
 gulp.task "livereload", ->
   reload = livereload()
