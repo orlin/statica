@@ -4,7 +4,7 @@
 
 [Harp](http://harpjs.com) is awesome.  Only missing two things my workflow has grown accustomed to -- [Compass](http://compass-style.org) and livereload.  The former [would be available](https://github.com/hcatlin/libsass/issues/82) *eventually* on top of [libsass](http://libsass.org)...  The original `sass` syntax [could arrive](https://github.com/sintaxi/harp/issues/185) perhaps sooner.  All this because of the yet incomplete feature parity between the Ruby and Node versions of Sass.  For now it simply makes more sense to compile styles with Ruby / Compass.  It appears livereload [will happen](https://github.com/sintaxi/harp/issues/80) as well.  I just couldn't wait for either.
 
-[Gulp](http://gulpjs.com) automates the extra step of compiling to css and live-reloading any changes.  Bulding sites for staic deployment is another possible use.  Have a look at its [plugins](http://gulpjs.com/plugins) for ideas.
+[Gulp](http://gulpjs.com) automates the extra step of compiling to css and live-reloading any changes.  Building sites for static deployment is another possible use.  Have a look at its [plugins](http://gulpjs.com/plugins) for ideas.
 
 
 ## USE
