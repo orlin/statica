@@ -1,6 +1,7 @@
 o = require("./options.coffee")
 gulp = require("gulp")
 gutil = require("gulp-util")
+watch = require("gulp-watch")
 nodemon = require("gulp-nodemon")
 tap = require("gulp-tap")
 path = require("path")
@@ -26,17 +27,18 @@ gulp.task "compass", ->
     .pipe tap (config) ->
       project = path.dirname(config.path)
       gutil.log "Compass #{path.basename(config.path)} in #{project}"
-      compile = ->
-        exec "compass compile -c #{config.path}"
-        , {cwd: project}
-        , (error, stdout, stderr) ->
-          console.log("[compass] compiling #{project}")
-          process.stdout.write(stdout)
-          console.log("[compass] error(s) above") if error isnt null
-      compile()
-      gulp.watch "#{project}/**/*.+(sass|scss)", (event) ->
-        if event.type is "changed"
-          compile()
+      watch
+        name: project
+        glob: "#{project}/**/*.+(sass|scss)"
+        emitOnGlob: true
+        emit: "one"
+        , ->
+          exec "compass compile -c #{config.path}"
+          , {cwd: project}
+          , (error, stdout, stderr) ->
+            console.log("[compass] compiling #{project}")
+            process.stdout.write(stdout)
+            console.log("[compass] error(s) above") if error isnt null
 
 gulp.task "livereload", ->
   reload = livereload()

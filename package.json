@@ -20,6 +20,7 @@
   , "gulp-nodemon": "*"
   , "gulp-tap": "*"
   , "gulp-util": "*"
+  , "gulp-watch": "*"
   , "gulp-livereload": "*"
   , "gulp-task-listing": "*"
   , "deepmerge": "*"
