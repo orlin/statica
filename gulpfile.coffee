@@ -43,6 +43,7 @@ gulp.task "compass", ->
 gulp.task "livereload", ->
   reload = livereload()
   gulp.watch(o.livereload.watch).on "change", (file) ->
+    gutil.log "#{path.basename(file.path)} has changed"
     reload.changed(file.path)
 
 gulp.task "default", o.gulp.default
