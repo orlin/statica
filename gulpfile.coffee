@@ -29,7 +29,7 @@ gulp.task "compass", ->
       gutil.log "Compass #{path.basename(config.path)} in #{project}"
       watch
         name: project
-        glob: "#{project}/**/*.+(sass|scss)"
+        glob: "#{project}/**/*.{sass,scss}"
         emitOnGlob: true
         emit: "one"
         , ->
