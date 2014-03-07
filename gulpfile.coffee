@@ -30,6 +30,7 @@ gulp.task "compass", ->
       root = path.dirname(config)
       # NOTE: skipped tracking sass import dependencies...
       # Thus, compile the whole project if a given file is _{underscored} for @import.
+      # Next, https://github.com/lox/sass-graph could help with optimizing it further.
       file = "" if typeof(file) isnt "string" or path.basename(file).indexOf("_") is 0
       exec "compass compile -c #{config} #{file}"
       , {cwd: root}
