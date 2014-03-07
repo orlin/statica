@@ -1,9 +1,8 @@
 o = require("./options.coffee")
+glob = require("glob")
 gulp = require("gulp")
 gutil = require("gulp-util")
-watch = require("gulp-watch")
 nodemon = require("gulp-nodemon")
-tap = require("gulp-tap")
 path = require("path")
 exec = require("child_process").exec
 help = require("gulp-task-listing")
@@ -14,6 +13,7 @@ livereload = require("gulp-livereload")
 
 gulp.task "help", help
 
+
 gulp.task "server", (next) ->
   nodemon
     verbose: false
@@ -22,28 +22,37 @@ gulp.task "server", (next) ->
     env: { NODE_ENV: "development" }
   next()
 
+
 gulp.task "compass", ->
-  gulp.src(o.compass.config, read: false)
-    .pipe tap (config) ->
-      project = path.dirname(config.path)
-      gutil.log "Compass #{path.basename(config.path)} in #{project}"
-      watch
-        name: project
-        glob: "#{project}/**/*.{sass,scss}"
-        emitOnGlob: true
-        emit: "one"
-        , ->
-          exec "compass compile -c #{config.path}"
-          , {cwd: project}
-          , (error, stdout, stderr) ->
-            console.log("[compass] compiling #{project}")
-            process.stdout.write(stdout)
-            console.log("[compass] error(s) above") if error isnt null
+  glob o.compass.config, { sync: true, nonull: false }, (e, files) ->
+    configs = for file in files then path.resolve(__dirname, file)
+    compile = (config) ->
+      root = path.dirname(config)
+      exec "compass compile -c #{config}"
+      , {cwd: root}
+      , (error, stdout, stderr) ->
+        console.log("[compass] compiling #{root}")
+        process.stdout.write(stdout)
+        console.log("[compass] error(s) above") if error isnt null
+
+    for conf in configs
+      gutil.log("Compass #{path.basename(conf)} in #{path.dirname(conf)}")
+      compile(conf)
+
+    gulp.watch "#{o.harp.path}/**/*.{sass,scss}", (event) ->
+      unless event.type is "deleted" # if added or changed
+        for conf in configs
+          if event.path.indexOf(path.dirname(conf)) is 0
+            compile(conf)
+            break
+      else console.log("Note: unhandled deletion of #{event.path}")
+
 
 gulp.task "livereload", ->
   reload = livereload()
   gulp.watch(o.livereload.watch).on "change", (file) ->
     gutil.log "#{path.basename(file.path)} has changed"
     reload.changed(file.path)
+
 
 gulp.task "default", o.gulp.default

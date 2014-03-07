@@ -15,12 +15,11 @@
 , "contributors": []
 , "dependencies":
   { "coffee-script": "*"
+  , "glob": "*"
   , "harp": "*"
   , "gulp": "*"
-  , "gulp-nodemon": "*"
-  , "gulp-tap": "*"
   , "gulp-util": "*"
-  , "gulp-watch": "*"
+  , "gulp-nodemon": "*"
   , "gulp-livereload": "*"
   , "gulp-task-listing": "*"
   , "deepmerge": "*"
