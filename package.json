@@ -2,7 +2,7 @@
 , "private": true
 , "description": "gulp harp multihost"
 , "keywords": [ "gulp", "harp", "multihost", "compass", "livereload", "workflow" ]
-, "version": "0.0.3"
+, "version": "0.0.4"
 , "repository":
   { "type": "git"
   , "url": "git://github.com/orlin/statica.git"
@@ -15,11 +15,11 @@
 , "contributors": []
 , "dependencies":
   { "coffee-script": "*"
+  , "glob": "*"
   , "harp": "*"
   , "gulp": "*"
-  , "gulp-nodemon": "*"
-  , "gulp-tap": "*"
   , "gulp-util": "*"
+  , "gulp-nodemon": "*"
   , "gulp-livereload": "*"
   , "gulp-task-listing": "*"
   , "deepmerge": "*"
