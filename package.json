@@ -18,6 +18,7 @@
   , "glob": "*"
   , "harp": "*"
   , "gulp": "*"
+  , "gulp-load": "*"
   , "gulp-util": "*"
   , "gulp-nodemon": "*"
   , "gulp-livereload": "*"

@@ -1,14 +1,18 @@
 o = require("./options.coffee")
 glob = require("glob")
 gulp = require("gulp")
+require("gulp-load")(gulp)
 gutil = require("gulp-util")
 nodemon = require("gulp-nodemon")
 path = require("path")
 exec = require("child_process").exec
 help = require("gulp-task-listing")
 livereload = require("gulp-livereload")
-
 # print = require("gulp-print") # debug
+
+
+# load private ./tasks/*.js
+gulp.loadTasks __dirname
 
 
 gulp.task "help", help
