@@ -2,7 +2,7 @@
 , "private": true
 , "description": "gulp harp multihost"
 , "keywords": [ "gulp", "harp", "multihost", "compass", "livereload", "workflow" ]
-, "version": "0.0.4"
+, "version": "0.0.5"
 , "repository":
   { "type": "git"
   , "url": "git://github.com/orlin/statica.git"

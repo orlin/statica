@@ -15,7 +15,7 @@ Clone or fork the project and `npm install` its node modules.  Harp projects are
 
 Start the default tasks (harp `server`, `compass` and `livereload`) using either `npm run server` or after `npm install -g gulp` just with the `gulp` command.
 
-Compass projects are identified through the presence of their `config.rb` (or `compass.rb`) files.  Exact `compass.config` paths can optionally be supplied.  Configure what is watched and reloaded with `livereload.watch`.  It's the configuration value most likely to vary between projects.  If a single [minimatch](https://github.com/isaacs/minimatch) glob pattern isn't good-enough, gulp can take an array of strings too.
+Compass projects are identified through the presence of their `config.rb` (or `compass.rb`) files.  Exact `compass.config` paths can optionally be supplied.  Configure what is watched and reloaded with `livereload.watch`.  It's the configuration value most likely to vary between projects.  If a single [minimatch](https://github.com/isaacs/minimatch) glob pattern isn't good-enough, gulp can take an array of strings, possibly excluding paths too.
 
 Override the `gulp.default` to run extra tasks, skip `compass`, etc.
 
