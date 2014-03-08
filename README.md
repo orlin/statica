@@ -9,13 +9,30 @@
 
 ## USE
 
+### Setup
+
 Clone or fork the project and `npm install` its node modules.  Harp projects are served by default in multihost mode from a git-ignored `harp` directory, any of which may of-course be git repositories themselves.  The defaults coming from `options.coffee` can be overridden with an `options.json`.  For example, to change the `harp` projects directory to `sites` create an options.json with contents of `{"harp": {"path": "sites"}}` -- in such a case, also add `sites` to the `.gitignore`.
 
 Start the default tasks (harp `server`, `compass` and `livereload`) using either `npm run server` or after `npm install -g gulp` just with the `gulp` command.
 
-Compass projects are identified through the presence of their `config.rb` (or `compass.rb`) files.  Exact `compass.config` paths can optionally be supplied.  Configure what is watched and reloaded with `livereload.watch`.  It's the configuration value most likely to vary between projects.  If a single [minimatch](https://github.com/isaacs/minimatch) glob pattern isn't good-enough, gulp can take an array of strings too.
+Compass projects are identified through the presence of their `config.rb` (or `compass.rb`) files.  Exact `compass.config` paths can optionally be supplied.  Configure what is watched and reloaded with `livereload.watch`.  It's the configuration value most likely to vary between projects.  If a single [minimatch](https://github.com/isaacs/minimatch) glob pattern isn't good-enough, gulp can take an array of strings, possibly excluding paths too.
 
 Override the `gulp.default` to run extra tasks, skip `compass`, etc.
+
+### Private Tasks
+
+If you need some custom tasks that aren't meant for sharing, make a `tasks` directory and put the code in it.  Using [gulp-load](https://github.com/popomore/gulp-load) which looks for `./tasks/*.js`.  Here is an example test task:
+
+```js
+module.exports = function(gulp) {
+  gulp.task("test", function() {
+    console.log("console-logged: 'test'");
+  });
+};
+```
+
+Run it with `gulp test`, add it to the `gulp.default`, etc.
+
 
 Happy gulp-harping!
 
