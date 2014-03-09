@@ -11,5 +11,6 @@ node_modules
 npm-debug.log
 
 harp
-options.json
+sites
 tasks
+options.json

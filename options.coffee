@@ -4,9 +4,9 @@ defaults =
     path: "harp"
     port: 9000
   compass:
-    config: "harp/**/{config,compass}.rb"
+    config: "{harp,sites}/**/{config,compass}.rb"
   livereload:
-    watch: "harp/**/*.{jade,html,css}"
+    watch: "{harp,sites}/**/*.{jade,html,css}"
   gulp:
     default: ["server", "compass", "livereload"]
 

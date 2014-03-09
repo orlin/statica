@@ -6,12 +6,14 @@
 
 [Gulp](http://gulpjs.com) automates the extra step of compiling to css and live-reloading any changes.  Building sites for static deployment is another possible use.  Have a look at its [plugins](http://gulpjs.com/plugins) for ideas.
 
+Statica can also help with development of any web apps, beyond the static / Harp-served.  The `compass` and `livereload` tasks would be just as applicable to any webdev workflow.  As for the `server`, given `node` apps, [Katon](https://github.com/typicode/katon) is simply fantastic.
+
 
 ## USE
 
 ### Setup
 
-Clone or fork the project and `npm install` its node modules.  Harp projects are served by default in multihost mode from a git-ignored `harp` directory, any of which may of-course be git repositories themselves.  The defaults coming from `options.coffee` can be overridden with an `options.json`.  For example, to change the `harp` projects directory to `sites` create an options.json with contents of `{"harp": {"path": "sites"}}` -- in such a case, also add `sites` to the `.gitignore`.
+Clone or fork the project and `npm install` its node modules.  Harp projects are served by default in multihost mode from a git-ignored `harp` directory, any of which may of-course be git repositories themselves.  The defaults coming from `options.coffee` can be overridden with an `options.json`.  For example, to change the `harp` projects directory to `sites` create an options.json with contents of `{"harp": {"path": "sites"}}`.  It's where I actually keep my non-harp sites, so that directory is already git-ignored and watched by default.
 
 Start the default tasks (harp `server`, `compass` and `livereload`) using either `npm run server` or after `npm install -g gulp` just with the `gulp` command.
 
