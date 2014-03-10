@@ -4,6 +4,7 @@ defaults =
     path: "harp"
     port: 9000
   compass:
+    watch: "{harp,sites}/**/*.{sass,scss}"
     config: "{harp,sites}/**/{config,compass}.rb"
   livereload:
     watch: "{harp,sites}/**/*.{jade,html,css}"
