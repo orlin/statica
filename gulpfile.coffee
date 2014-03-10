@@ -8,6 +8,8 @@ path = require("path")
 exec = require("child_process").exec
 help = require("gulp-task-listing")
 livereload = require("gulp-livereload")
+fs = require("fs")
+rimraf = require("rimraf")
 # print = require("gulp-print") # debug
 
 
@@ -56,7 +58,20 @@ gulp.task "compass", ->
           if event.path.indexOf(path.dirname(conf)) is 0
             compile(conf, event.path)
             break
-      else console.log("Note: unhandled deletion of #{event.path}")
+      else
+        console.log("[deleted] #{event.path}")
+        # make a guess that the css is written to the same directory
+        name = path.basename(event.path).replace(/\.[^\.]+$/, ".css")
+        file = path.join(path.dirname(event.path), name)
+        fs.exists file, (exists) ->
+          if exists
+            rimraf file, (err) ->
+              if err is null
+                console.log("[deleted] #{file}")
+              else
+                console.log(err)
+          else
+            console.log("Note: unhandled deletion of #{event.path}")
 
 
 gulp.task "livereload", ->
