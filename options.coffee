@@ -8,7 +8,7 @@ defaults =
     config: "{harp,sites}/**/{config,compass}.rb"
     ensure: true # compile everything to be sure
   livereload:
-    watch: "{harp,sites}/**/*.{jade,html,css}"
+    watch: "{harp,sites}/**/*.{jade,html,css,js,coffee}"
   gulp:
     default: ["server", "compass", "livereload"]
 
