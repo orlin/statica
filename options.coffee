@@ -6,6 +6,7 @@ defaults =
   compass:
     watch: "{harp,sites}/**/*.{sass,scss}"
     config: "{harp,sites}/**/{config,compass}.rb"
+    ensure: true # compile everything to be sure
   livereload:
     watch: "{harp,sites}/**/*.{jade,html,css}"
   gulp:

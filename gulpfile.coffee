@@ -44,10 +44,11 @@ gulp.task "compass", ->
         process.stdout.write(stderr) if stderr
         console.log("[compass] error(s) above") if error isnt null
 
-    # Compile all compass projects just in case something has changed.
-    for conf in configs
-      gutil.log("Compass #{path.basename(conf)} in #{path.dirname(conf)}")
-      compile(conf)
+    # Precompile all compass projects just in case anything has changed.
+    if o.compass.ensure is true
+      for conf in configs
+        gutil.log("Compass #{path.basename(conf)} in #{path.dirname(conf)}")
+        compile(conf)
 
     gulp.watch o.compass.watch, (event) ->
       unless event.type is "deleted" # if added or changed
