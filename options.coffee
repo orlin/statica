@@ -1,14 +1,15 @@
 defaults =
   harp:
-    server: "multihost" # use "server" for a solo site
+    mode: "multihost" # use "server" for a solo site
     path: "harp"
     port: 9000
+    more: [] # "path" and "port" are required for each extra server
   compass:
-    watch: "{harp,sites}/**/*.{sass,scss}"
-    config: "{harp,sites}/**/{config,compass}.rb"
+    watch: ["{harp,sites,apps}/**/*.{sass,scss}", "!**/node_modules/**"]
+    config: "{harp,sites,apps}/**/{config,compass}.rb"
     ensure: true # compile everything to be sure
   livereload:
-    watch: "{harp,sites}/**/*.{jade,html,css}"
+    watch: ["{harp,sites,apps}/**/*.{jade,html,css,js,coffee}", "!**/node_modules/**"]
   gulp:
     default: ["server", "compass", "livereload"]
 
