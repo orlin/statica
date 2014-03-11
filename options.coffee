@@ -4,11 +4,11 @@ defaults =
     path: "harp"
     port: 9000
   compass:
-    watch: "{harp,sites,apps}/**/*.{sass,scss}"
+    watch: ["{harp,sites,apps}/**/*.{sass,scss}", "!**/node_modules/**"]
     config: "{harp,sites,apps}/**/{config,compass}.rb"
     ensure: true # compile everything to be sure
   livereload:
-    watch: "{harp,sites,apps}/**/*.{jade,html,css,js,coffee}"
+    watch: ["{harp,sites,apps}/**/*.{jade,html,css,js,coffee}", "!**/node_modules/**"]
   gulp:
     default: ["server", "compass", "livereload"]
 
