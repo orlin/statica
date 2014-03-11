@@ -3,6 +3,7 @@ defaults =
     mode: "multihost" # use "server" for a solo site
     path: "harp"
     port: 9000
+    more: []
   compass:
     watch: ["{harp,sites,apps}/**/*.{sass,scss}", "!**/node_modules/**"]
     config: "{harp,sites,apps}/**/{config,compass}.rb"
